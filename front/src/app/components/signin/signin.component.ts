@@ -4,6 +4,7 @@ import { AuthService } from './../../shared/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TokenService } from '../../shared/token.service';
 import { AuthStateService } from '../../shared/auth-state.service';
+import { AlertifyService } from '../../shared/alertify.service';
 
 @Component({
   selector: 'app-signin',
@@ -20,7 +21,8 @@ export class SigninComponent implements OnInit {
     public fb: FormBuilder,
     public authService: AuthService,
     private token: TokenService,
-    private authState: AuthStateService
+    private authState: AuthStateService,
+    private alertify:AlertifyService,
   ) {
     this.loginForm = this.fb.group({
       email: [],
@@ -33,10 +35,13 @@ export class SigninComponent implements OnInit {
   onSubmit() {
     this.authService.signin(this.loginForm.value).subscribe(
       (result) => {
+        this.alertify.success('خوش آمدید');
         this.responseHandler(result);
       },
       (error) => {
         this.errors = error.error;
+        if(this.errors?.error)
+            this.alertify.error(this.errors?.error);
       },
       () => {
         this.authState.setAuthState(true);

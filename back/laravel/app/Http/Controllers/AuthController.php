@@ -26,7 +26,7 @@ class AuthController extends Controller
             return response()->json($validator->errors(), 422);
         }
         if (! $token = auth()->attempt($validator->validated())) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'ایمیل یا رمز اشتباه'], 401);
         }
         return $this->createNewToken($token);
     }
@@ -49,7 +49,7 @@ class AuthController extends Controller
                     ['password' => bcrypt($request->password)]
                 ));
         return response()->json([
-            'message' => 'User successfully registered',
+            'message' => 'کاربر با موفقیت ثبت نام شد',
             'user' => $user
         ], 201);
     }
@@ -61,7 +61,7 @@ class AuthController extends Controller
      */
     public function logout() {
         auth()->logout();
-        return response()->json(['message' => 'User successfully signed out']);
+        return response()->json(['message' => 'کاربر با موفقیت خارج شد']);
     }
     /**
      * Refresh a token.

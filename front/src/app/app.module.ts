@@ -12,6 +12,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AuthInterceptor } from './shared/auth.interceptor';
+import { AlertifyService } from './shared/alertify.service';
+import { SidebarComponent } from './components/layouts/sidebar/sidebar.component';
+import { TopbarComponent } from './components/layouts/topbar/topbar.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,8 @@ import { AuthInterceptor } from './shared/auth.interceptor';
     SigninComponent,
     SignupComponent,
     UserProfileComponent,
+    SidebarComponent,
+    TopbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,11 +34,13 @@ import { AuthInterceptor } from './shared/auth.interceptor';
   
   ],
   providers: [
+    AlertifyService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
-    },
+      
+    }
   ],
   bootstrap: [AppComponent],
 })
