@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 
 @Component({
@@ -8,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class UserProfileComponent implements OnInit {
- 
+  keyword :boolean = false;
   constructor() {   
   }
   ngOnInit() {
+  }
+  send(status:boolean){
+    this.keyword = status;
   }
 }

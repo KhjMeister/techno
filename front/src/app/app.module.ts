@@ -15,6 +15,8 @@ import { AuthInterceptor } from './shared/auth.interceptor';
 import { AlertifyService } from './shared/alertify.service';
 import { SidebarComponent } from './components/layouts/sidebar/sidebar.component';
 import { TopbarComponent } from './components/layouts/topbar/topbar.component';
+import { LandingComponent } from './components/landing/landing.component';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { TopbarComponent } from './components/layouts/topbar/topbar.component';
     UserProfileComponent,
     SidebarComponent,
     TopbarComponent,
+    LandingComponent,
+  
   ],
   imports: [
     BrowserModule,

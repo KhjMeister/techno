@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit  } from '@angular/core';
 import { AuthService } from '../../../shared/auth.service';
 import { Router } from '@angular/router';
 import { TokenService } from '../../../shared/token.service';
@@ -17,6 +17,7 @@ export class User {
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+  @Input() keyword:boolean= false;
 
   UserProfile!: User;
   

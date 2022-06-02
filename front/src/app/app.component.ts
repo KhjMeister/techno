@@ -10,6 +10,11 @@ import { AuthStateService } from './shared/auth-state.service';
 })
 
 export class AppComponent implements OnInit {
+  keyword :boolean = false;
+ 
+  send(status:boolean){
+    this.keyword = status;
+  }
   isSignedIn!: boolean;
 
   constructor(
